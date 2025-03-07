@@ -1,4 +1,15 @@
 import json
+import requests
+
+
+def get_animal_data_with_api(animal_name):
+    api_url = 'https://api.api-ninjas.com/v1/animals?name={}'.format(animal_name)
+    response = requests.get(api_url, headers={'X-Api-Key': '0gTN1Fow0rYxFNN1R62cRw==47Nd1GuAyfx8O97C'})
+    if response.status_code == requests.codes.ok:
+        return response.json()
+    else:
+        print("Error:", response.status_code, response.text)
+        return False
 
 
 def load_json_file(file_path):
@@ -186,6 +197,8 @@ def serialize_animal(animal_obj):
     Returns:
         str: HTML representation of the animal data.
     """
+    if not animal_obj:
+        return False
     animal_content = ""
     name = get_name(animal_obj)
     diet = get_diet(animal_obj)
@@ -220,17 +233,20 @@ def serialize_animal(animal_obj):
     return animal_content
 
 
-def create_html_content(animals):
+def create_html_content(animal_content, search_term):
     """
     Generate HTML content from a list of animal dictionaries.
 
     Args:
-        animals (list): List of animal dictionaries.
+        animal_content (list): List of animal dictionaries.
 
     Returns:
         str: HTML representation of all animals.
     """
-    return "".join(serialize_animal(animal) for animal in animals)
+    if animal_content:
+        return "".join(serialize_animal(animal) for animal in animal_content)
+    return f"<h2>🚨 The animal '{search_term}' doesn't exist 🚨</h2>"
+
 
 
 def main():
@@ -238,13 +254,13 @@ def main():
     Main function to load data, generate HTML content, and save the final document.
     """
     print("🚀 Starting the program...")
-    animals_data = load_json_file("animals_data.json")
+    animal = input("Enter an animal: ")
+    animals_data = get_animal_data_with_api(animal)
     animals_template = load_html_file("animals_template.html")
-    html_content = create_html_content(animals_data)
+    html_content = create_html_content(animals_data, animal)
     new_animals_template = animals_template.replace("__REPLACE_ANIMALS_INFO__", html_content)
     save_document("animals.html", new_animals_template)
     print("✅ Program finished successfully.")
-
 
 if __name__ == "__main__":
     main()

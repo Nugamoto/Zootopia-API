@@ -4,73 +4,94 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>My Animal Repository</title>
     <style>
-        @gray-darker:               #444444;
-        @gray-dark:                 #696969;
-        @gray:                      #999999;
-        @gray-light:                #cccccc;
-        @gray-lighter:              #ececec;
-        @gray-lightest:             lighten(@gray-lighter,4%);
-
-
         html {
-          background-color: #ffe9e9;
+            background-color: #ffe9e9;
+        }
+
+        body {
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            font-family: 'Roboto', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+            background-color: #ffe9e9;
+        }
+
+        h1, h2 {
+            text-align: center;
         }
 
         h1 {
-            text-align: center;
             font-size: 40pt;
             font-weight: normal;
         }
 
-        body {
-          font-family: 'Roboto','Helvetica Neue', Helvetica, Arial, sans-serif;
-          font-style: normal;
-          font-weight: 400;
-          letter-spacing: 0;
-          padding: 1rem;
-          text-rendering: optimizeLegibility;
-          -webkit-font-smoothing: antialiased;
-          -moz-osx-font-smoothing: grayscale;
-          -moz-font-feature-settings: "liga" on;
-          width: 900px;
-          margin: auto;
+        h2 {
+            font-size: 24pt;
+            font-weight: bold;
+            color: #ff4d4d;
+            background: linear-gradient(to right, #ffcccc, #ffe6e6);
+            padding: 15px 25px;
+            border-radius: 8px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+            border: 2px solid #ff0000;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
         }
 
-        .cards {
-          list-style: none;
-          margin: 0;
-          padding: 0;
+        ul.cards {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+            padding: 0;
+            width: 100%;
         }
 
         .cards__item {
-          background-color: white;
-          border-radius: 0.25rem;
-          box-shadow: 0 20px 40px -14px rgba(0,0,0,0.25);
-          overflow: hidden;
-          padding: 1rem;
-          margin: 50px;
+            width: 100%;
+            max-width: 600px;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            overflow: hidden;
+            padding: 15px;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            justify-content: flex-start;
+            height: auto;
         }
 
         .card__title {
-          color: @gray-dark;
-          font-size: 1.25rem;
-          font-weight: 300;
-          letter-spacing: 2px;
-          text-transform: uppercase;
-          text-decoration: underline;
+            color: #696969;
+            font-size: 1.25rem;
+            font-weight: 300;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            text-decoration: underline;
+            width: 100%;
+            text-align: center;
         }
 
         .card__text {
-          flex: 1 1 auto;
-          font-size: 0.95rem;
-          line-height: 2;
-          margin-bottom: 1.25rem;
+            width: 100%;
+            text-align: left;
+            padding: 10px 0;
+            overflow-wrap: break-word;
+            word-wrap: break-word;
+            hyphens: auto;
         }
 
         ul {
-           list-style: square outside none;
+            list-style: square outside none;
+            padding-left: 20px;
         }
 
+        li {
+            padding: 5px;
+        }
     </style>
 </head>
 <body>
