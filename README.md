@@ -7,7 +7,8 @@ This Python project allows users to fetch data about a selected animal using the
 1. Ensure Python (version 3.x) is installed on your system.
 2. Clone the repository:
    ```sh
-   cd zootopia-api
+   git clone https://github.com/Nugamoto/Zootopia-API.git
+   cd Zootopia-API
    ```
 3. Install the required dependencies:
    ```sh
