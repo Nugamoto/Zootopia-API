@@ -124,12 +124,10 @@ def serialize_animal(animal_obj):
     Returns:
         str: HTML representation of the animal data.
     """
-    if not animal_obj:
-        return False
     animal_content = ""
     name = get_name(animal_obj)
     diet = get_diet(animal_obj)
-    first_location = get_locations(animal_obj)[0]
+    locations = get_locations(animal_obj)
     type_ = get_type(animal_obj)
     skin_type = get_skin_type(animal_obj)
     lifespan = get_lifespan(animal_obj)
@@ -140,7 +138,8 @@ def serialize_animal(animal_obj):
     animal_content += f'<div class="card__title">{name}</div>\n'
     animal_content += '<div class="card__text">\n'
     animal_content += '<ul>\n'
-    animal_content += f"<li><strong>Location:</strong> {first_location}</li>\n"
+    if locations:
+        animal_content += f"<li><strong>Location:</strong> {locations[0]}</li>\n" # Only add first location
     if diet:
         animal_content += f"<li><strong>Diet:</strong> {diet}</li>\n"
     if type_:
